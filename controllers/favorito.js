@@ -15,7 +15,21 @@ function prueba (request, response) {
 
 function getFavorito (request, response) {
     var favoritoId = request.params.id;
-    response.status(200).send({data: favoritoId});
+
+    Favorito.findById(favoritoId, (error, favorito) => {
+        if (error) {
+            response.status(500).send({
+                message: 'Error al devolver el marcador'
+            });
+        }
+
+        if (!favorito) {
+            response.status(404).send({message:'No hay marcador'});
+        }
+
+        response.status(200).send({favorito});
+
+    })
 }
 
 function getFavoritos (request, response) {
