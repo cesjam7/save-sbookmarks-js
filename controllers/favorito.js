@@ -22,7 +22,8 @@ function getFavoritos (request, response) {
 }
 
 function saveFavorito (request, response) {
-    
+    var params = request.body;
+    response.status(200).send({favorito : params});
 }
 
 function updateFavorito (request, response) {
@@ -33,5 +34,8 @@ function deleteFavorito (request, response) {
 
 module.exports = {
     prueba,
-    getFavorito
+    getFavorito,
+    saveFavorito,
+    updateFavorito,
+    deleteFavorito
 }
