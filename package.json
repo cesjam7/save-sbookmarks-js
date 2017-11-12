@@ -1,0 +1,14 @@
+{
+  "name": "api-restful-favoritos",
+  "version": "1.0.0",
+  "description": "Proyecto de api restful del curso de Mean de Udemy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cesar Aquini",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
