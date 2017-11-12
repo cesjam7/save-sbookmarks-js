@@ -11,6 +11,27 @@ function prueba (request, response) {
     });
 }
 
+function getFavorito (request, response) {
+    var favoritoId = request.params.id;
+
+    response.status(200).send({data: favoritoId});
+}
+
+function getFavoritos (request, response) {
+
+}
+
+function saveFavorito (request, response) {
+    
+}
+
+function updateFavorito (request, response) {
+}
+
+function deleteFavorito (request, response) {
+}
+
 module.exports = {
-    prueba
+    prueba,
+    getFavorito
 }
