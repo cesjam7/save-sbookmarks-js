@@ -73,8 +73,20 @@ function saveFavorito (request, response) {
 }
 
 function updateFavorito (request, response) {
-    var params = request.body;
-    response.status(200).send({update : true, favorito : params});
+    var favoritoId = request.params.id;
+    var update = request.body;
+
+    // id, datos a modificar y callback
+    Favorito.findByIdAndUpdate(favoritoId, update, (error, favoritoUpdated) => {
+        if (error) {
+            response.status(500).send({
+                message: 'Error al actualizar el marcador'
+            });
+        }
+        // Va a devolver el anterior objeto, pero SI fue actualizado. Verificar.
+        response.status(200).send({favoritoUpdated});
+
+    });
 }
 
 function deleteFavorito (request, response) {
