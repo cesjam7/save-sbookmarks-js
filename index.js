@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // Si ponemos un ? al final, hacemos que ese parametro personalizado sea opcional
-app.get('/prueba/:nombre?', function(request, response) {
+app.get('/prueba/:nombre?', (request, response) => {
     if (request.params.nombre) {
         var nombre = request.params.nombre;
     } else {
@@ -22,6 +22,6 @@ app.get('/prueba/:nombre?', function(request, response) {
     });
 })
 
-app.listen(port, function() {
+app.listen(port, () => {
     console.log(`API REST FAVORITOS funcionando en http://localhost:${port}`);
 })
