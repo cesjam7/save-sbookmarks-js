@@ -1,5 +1,7 @@
 'use strict'
 
+var Favorito = require('../models/favorito');
+
 function prueba (request, response) {
     if (request.params.nombre) {
         var nombre = request.params.nombre;
@@ -21,8 +23,25 @@ function getFavoritos (request, response) {
 }
 
 function saveFavorito (request, response) {
+    var favorito = new Favorito();
+
     var params = request.body;
-    response.status(200).send({favorito : params});
+    favorito.title = params.title;
+    favorito.description = params.description;
+    favorito.url = params.url;
+
+    favorito.save((error, favoritoStored) => {
+        if (error) {
+            response.status(500).send({
+                message: 'Error al guardar el marcador'
+            });
+        }
+
+        response.status(200).send({
+            favorito : favoritoStored
+        });
+    })
+
 }
 
 function updateFavorito (request, response) {

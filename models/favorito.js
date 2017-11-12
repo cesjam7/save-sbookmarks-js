@@ -10,4 +10,4 @@ var FavoritosSchema = Schema({
     url : String
 });
 
-module.exports = mongoose.model('Favorito', FavoritoSchema);
+module.exports = mongoose.model('Favorito', FavoritosSchema);

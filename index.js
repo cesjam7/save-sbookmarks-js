@@ -6,7 +6,7 @@ var port = process.env.PORT || 3678;
 
 // puerto por default 27017
 // tengo una base de datos ya creada llamada 'cursofavoritos'
-mongoose.connect('mongodb://localhost:27017.cursofavoritos', (error, response) => {
+mongoose.connect('mongodb://localhost:27017/cursofavoritos', (error, response) => {
 
     if (error) {
         throw error;
