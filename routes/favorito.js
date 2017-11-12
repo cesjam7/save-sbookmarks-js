@@ -7,6 +7,7 @@ var api = express.Router();
 // Si ponemos un ? al final, hacemos que ese parametro personalizado sea opcional
 api.get('/prueba/:nombre?', FavoritoController.prueba);
 api.get('/favorito/:id', FavoritoController.getFavorito);
+api.get('/favoritos/', FavoritoController.getFavoritos);
 api.post('/favorito/', FavoritoController.saveFavorito);
 api.put('/favorito/', FavoritoController.updateFavorito);
 api.delete('/favorito/:id', FavoritoController.deleteFavorito);
