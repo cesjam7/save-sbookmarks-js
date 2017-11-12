@@ -42,7 +42,7 @@ function getFavoritos (request, response) {
         }
 
         if (!favoritos) {
-            response.status(404).send({message:'N hay marcadores'});
+            response.status(404).send({message:'No hay marcadores'});
         }
 
         response.status(200).send({favoritos});
@@ -91,7 +91,31 @@ function updateFavorito (request, response) {
 
 function deleteFavorito (request, response) {
     var favoritoId = request.params.id;
-    response.status(200).send({delete : true, data: favoritoId});
+
+    Favorito.findById(favoritoId, (error, favorito) => {
+        if (error) {
+            response.status(500).send({
+                message: 'Error al devolver el marcador'
+            });
+        }
+
+        if (!favorito) {
+            response.status(404).send({message:'No hay marcador'});
+        }
+
+        favorito.remove(error => {
+            if (error) {
+                response.status(500).send({
+                    message: 'Error al borrar'
+                });
+            } else {
+                response.status(200).send(
+                    {message : 'El marcador se ha borrado'}
+                )
+            }
+        })
+    })
+
 }
 
 module.exports = {
