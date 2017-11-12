@@ -13,7 +13,6 @@ function prueba (request, response) {
 
 function getFavorito (request, response) {
     var favoritoId = request.params.id;
-
     response.status(200).send({data: favoritoId});
 }
 
@@ -27,9 +26,13 @@ function saveFavorito (request, response) {
 }
 
 function updateFavorito (request, response) {
+    var params = request.body;
+    response.status(200).send({update : true, favorito : params});
 }
 
 function deleteFavorito (request, response) {
+    var favoritoId = request.params.id;
+    response.status(200).send({delete : true, data: favoritoId});
 }
 
 module.exports = {
