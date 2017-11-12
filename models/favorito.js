@@ -10,4 +10,5 @@ var FavoritosSchema = Schema({
     url : String
 });
 
+// Mongoose pluraliza siempre el nombre de la coleccion siempre y cuando no lleve un numero al final
 module.exports = mongoose.model('Favorito', FavoritosSchema);

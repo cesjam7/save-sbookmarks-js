@@ -20,7 +20,7 @@ function getFavorito (request, response) {
 
 function getFavoritos (request, response) {
 
-    Favorito.find({}, (error, favoritos) => {
+    Favorito.find({}).sort('-_id').exec((error, favoritos) => {
         if (error) {
             response.status(500).send({
                 message: 'Error al devolver los marcadores'
